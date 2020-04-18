@@ -1,0 +1,33 @@
+@startuml Deployment
+
+frame OnlineUsage {
+    cloud Server as s
+    actor User as u
+    control Terminal as t
+    control Mobile as m
+
+    t -> s : Send data
+    s -> t : Send commands 
+
+    s -> m : Send data from termial
+    m -> s : Send commands for terminal
+
+    u -> m : Send commands for terminal
+    m -> u : Display data from terminal
+}
+
+newpage
+
+frame OfflineUsage {
+    actor User as u
+    control Terminal as t
+    control Mobile as m
+
+    t -> m : Send data
+    m -> t : Send commands
+
+    u -> m : Send commands for terminal
+    m -> u : Display data from terminal
+}
+
+@enduml
